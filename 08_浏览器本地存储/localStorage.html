@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+  </head>
+  <body>
+    <h2>localStorage</h2>
+    <button onclick="saveData()">点我绑定一个数据</button>
+    <button onclick="readData()">点我读取一个数据</button>
+    <button onclick="deleteData()">点我删除一个数据</button>
+    <button onclick="deleteAllData()">点我清空数据</button>
+
+    <script type="text/javascript">
+      let p = {name:'张三',age:18};
+      function saveData(){
+        // 因为是window对象，所以可以直接使用
+        // window.localStorage.setItem(); 如果第二个参数不是String类型,就会调toString方法
+        localStorage.setItem('msg','hello!!!')
+        localStorage.setItem('msg2',666)// 注意：灰色的666是字符串，蓝色的是数字，可以发现这里保存的是数字
+        //localStorage.setItem('person',p)// 	[object Object],之后读取也不知道具体内容
+        // 改成一下的方式
+        localStorage.setItem('person',JSON.stringify(p))
+      }
+      function readData(){
+        console.log(localStorage.getItem('msg'))
+        console.log(localStorage.getItem('msg2'))
+        
+        const result = localStorage.getItem('person')
+        console.log(JSON.parse(result))// 注意：这里JSON.parse转换null时还是null，不是undefined
+
+        console.log(localStorage.getItem('msg3'))
+      }
+      function deleteData(){
+        localStorage.removeItem('msg2')
+      }
+      function deleteAllData(){
+        localStorage.clear()
+      }
+    </script>
+  </body>
+</html>
