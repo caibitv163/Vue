@@ -13,6 +13,8 @@
     <Category title="电影">
       <video src="https://stream7.iqilu.com/10339/upload_transcode/202002/09/20200209105011F0zPoYzHry.mp4" controls/>
     </Category>
+
+    <Category title="默认" />
   </div>
 </template>
 
